@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    The properties in this file setup a Harry Potter flavor of this game called
+    The Sorting Hat. Note that by swapping out all these settings we could easily
+    change the flavor.
+-->
+<properties>
+    <property_list>
+        <!-- ALL THE IMAGES TO BE USED IN THE GAME -->
+        <property name="IMAGE_BACKGROUND_GAME"              value="./sorting_hat/BackgroundGame.png"></property>
+        <property name="IMAGE_BACKGROUND_MENU"              value="./sorting_hat/BackgroundMenu.png"></property>
+        <property name="IMAGE_BUTTON_BACK"                  value="./sorting_hat/ButtonBack.png"></property>
+        <property name="IMAGE_BUTTON_BACK_MOUSE_OVER"       value="./sorting_hat/ButtonBackMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_NEW"                   value="./sorting_hat/ButtonNewGame.png"></property>
+        <property name="IMAGE_BUTTON_NEW_MOUSE_OVER"        value="./sorting_hat/ButtonNewGameMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_STATS"                 value="./sorting_hat/ButtonStats.png"></property>
+        <property name="IMAGE_BUTTON_STATS_MOUSE_OVER"      value="./sorting_hat/ButtonStatsMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_UNDO"                  value="./sorting_hat/ButtonUndo.png"></property>
+        <property name="IMAGE_BUTTON_UNDO_MOUSE_OVER"       value="./sorting_hat/ButtonUndoMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_TEMP_TILE"             value="./sorting_hat/ButtonTempTile.png"></property>
+        <property name="IMAGE_BUTTON_TEMP_TILE_MOUSE_OVER"  value="./sorting_hat/ButtonTempTileMouseOver.png"></property>
+        <property name="IMAGE_CURSOR_WAND"                  value="./sorting_hat/CursorWand.png"></property>
+        <property name="IMAGE_DECOR_TIME"                   value="./sorting_hat/DecorTime.png"></property>
+        <property name="IMAGE_DECOR_MISCASTS"               value="./sorting_hat/DecorMiscasts.png"></property>
+        <property name="IMAGE_DIALOG_STATS"                 value="./sorting_hat/DialogStats.png"></property>
+        <property name="IMAGE_DIALOG_WIN"                   value="./sorting_hat/DialogWin.png"></property>
+        <property name="IMAGE_SPRITE_SHEET_CHARACTER_TILES" value="./sorting_hat/SpriteSheetCharacterTiles.png"></property>
+        <property name="IMAGE_TILE_BACKGROUND"              value="./sorting_hat/TileBackground.png"></property>
+        <property name="IMAGE_TILE_BACKGROUND_SELECTED"     value="./sorting_hat/TileBackgroundSelected.png"></property>
+        <property name="IMAGE_TILE_BACKGROUND_MOUSE_OVER"   value="./sorting_hat/TileBackgroundMouseOver.png"></property>
+        <property name="IMAGE_WINDOW_ICON"                  value="./sorting_hat/WindowIcon.png"></property>
+
+        <!-- ALL THE TEXT TO BE DISPLAYED -->
+        <property name="TEXT_ERROR_LOADING_AUDIO"               value="Error Loading an Audio File"></property>
+        <property name="TEXT_ERROR_LOADING_LEVEL"               value="Error Loading a Level File"></property>
+        <property name="TEXT_ERROR_LOADING_RECORD"              value="Error Loading the Player Record"></property>
+        <property name="TEXT_ERROR_LOADING_XML_FILE"            value="Error Loading an XML File"></property>
+        <property name="TEXT_ERROR_SAVING_RECORD"               value="Error Saving the Player Record"></property>
+        <property name="TEXT_LABEL_STATS_ALGORITHM"             value="Algorithm: "></property>
+        <property name="TEXT_LABEL_STATS_GAMES"                 value="Games: "></property>
+        <property name="TEXT_LABEL_STATS_WINS"                  value="Wins: "></property>
+        <property name="TEXT_LABEL_STATS_PERFECT_WINS"          value="Perfect Wins: "></property>
+        <property name="TEXT_LABEL_STATS_FASTEST_PERFECT_WIN"   value="Fastest Perfect Win: "></property>
+        <property name="TEXT_PROMPT_EXIT"                       value="Are you sure you wish to exit?"></property>
+        <property name="TEXT_TITLE_BAR_GAME"                    value="The Sorting Hat"></property>
+        <property name="TEXT_TITLE_BAR_ERROR"                   value="An error has occurred"></property>                
+        
+        <!-- AUDIO FILES -->
+        <property name="AUDIO_CUE_BAD_MOVE"                 value="./sorting_hat/BadMove.wav"></property>
+        <property name="AUDIO_CUE_CHEAT"                    value="./sorting_hat/Cheat.wav"></property>
+        <property name="AUDIO_CUE_DESELECT_TILE"            value="./sorting_hat/DeselectTile.wav"></property>
+        <property name="AUDIO_CUE_GOOD_MOVE"                value="./sorting_hat/GoodMove.wav"></property>
+        <property name="AUDIO_CUE_SELECT_TILE"              value="./sorting_hat/SelectTile.wav"></property>
+        <property name="AUDIO_CUE_UNDO"                     value="./sorting_hat/Undo.wav"></property>
+        <property name="AUDIO_CUE_WIN"                      value="./sorting_hat/Win.mid"></property>
+        <property name="SONG_CUE_GAME_SCREEN"               value="./sorting_hat/GameSong.mid"></property>        
+        <property name="SONG_CUE_MENU_SCREEN"               value="./sorting_hat/MenuSong.mid"></property>
+    </property_list>
+    
+    <!-- PLAYABLE LEVELS CREATED WITH THE LEVEL EDITOR -->
+    <property_options_list>
+        <property_options name="LEVEL_OPTIONS">
+            <option>./sorting_hat/BubbleSortCoil.sort</option>
+            <option>./sorting_hat/SelectionSortSine.sort</option>
+            <option>./sorting_hat/BubbleSortO.sort</option>
+            <option>./sorting_hat/SelectionSortU.sort</option>
+        </property_options>
+        <property_options name="LEVEL_IMAGE_OPTIONS">
+            <option>./sorting_hat/ButtonBubbleSortCoil.png</option>
+            <option>./sorting_hat/ButtonSelectionSortSine.png</option>
+            <option>./sorting_hat/ButtonBubbleSortO.png</option>
+            <option>./sorting_hat/ButtonSelectionSortU.png</option>
+        </property_options>
+        <property_options name="LEVEL_MOUSE_OVER_IMAGE_OPTIONS">
+            <option>./sorting_hat/ButtonBubbleSortCoilMouseOver.png</option>
+            <option>./sorting_hat/ButtonSelectionSortSineMouseOver.png</option>
+            <option>./sorting_hat/ButtonBubbleSortOMouseOver.png</option>
+            <option>./sorting_hat/ButtonSelectionSortUMouseOver.png</option>
+        </property_options>
+    </property_options_list>
+</properties>
