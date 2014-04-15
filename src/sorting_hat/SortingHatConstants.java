@@ -31,6 +31,10 @@ public class SortingHatConstants
     // IN-GAME UI CONTROL TYPES
     public static final String NEW_GAME_BUTTON_TYPE = "NEW_GAME_BUTTON_TYPE";
     public static final String BACK_BUTTON_TYPE = "BACK_BUTTON_TYPE";
+    public static final String PLAY_BUTTON_TYPE = "PLAY_BUTTON_TYPE";
+    public static final String RESET_BUTTON_TYPE = "RESET_BUTTON_TYPE";
+    public static final String SETTINGS_BUTTON_TYPE = "SETTINGS_BUTTON_TYPE";
+    public static final String HELP_BUTTON_TYPE = "HELP_BUTTON_TYPE";
     public static final String MISCASTS_COUNT_TYPE = "TILE_COUNT_TYPE";
     public static final String TIME_TYPE = "TIME_TYPE"; 
     public static final String STATS_BUTTON_TYPE = "STATS_BUTTON_TYPE";

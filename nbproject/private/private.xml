@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/sorting_hat/ui/SortingHatEventHandler.java</file>
             <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/sorting_hat/ui/SortingHatMiniGame.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/sorting_hat/ui/SortingHatEventHandler.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/data/sorting_hat/sorting_hat_properties.xml</file>
             <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/sorting_hat/TheSortingHat.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/sorting_hat/SortingHatConstants.java</file>
         </group>
     </open-files>
 </project-private>

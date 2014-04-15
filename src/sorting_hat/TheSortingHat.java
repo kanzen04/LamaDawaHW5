@@ -12,7 +12,7 @@ import static sorting_hat.SortingHatConstants.*;
  * from Harry Potter, but it could easily be swapped out just by changing
  * the artwork and audio files.
  * 
- * @author Richard McKenna & ________________________
+ * @author Richard McKenna & Dawa Lama
  */
 public class TheSortingHat
 {
@@ -81,6 +81,14 @@ public class TheSortingHat
         IMAGE_BACKGROUND_SETTINGS,
         IMAGE_BUTTON_BACK,
         IMAGE_BUTTON_BACK_MOUSE_OVER,
+        IMAGE_BUTTON_PLAY,
+        IMAGE_BUTTON_PLAY_MOUSE_OVER,
+        IMAGE_BUTTON_RESET,
+        IMAGE_BUTTON_RESET_MOUSE_OVER,
+        IMAGE_BUTTON_SETTINGS,
+        IMAGE_BUTTON_SETTINGS_MOUSE_OVER,
+        IMAGE_BUTTON_HELP,
+        IMAGE_BUTTON_HELP_MOUSE_OVER,
         IMAGE_BUTTON_NEW,
         IMAGE_BUTTON_NEW_MOUSE_OVER,
         IMAGE_BUTTON_STATS,
