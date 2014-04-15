@@ -87,16 +87,30 @@ public class SortingHatEventHandler
      * Called when the user clicks the settings button
      */
     public void respondToSettingsButton(){
-        
+        game.switchToSettingsScreen();
     }
     
     /**
      * Called when the user clicks the help button
      */
     public void respondToHelpButton(){
-        
+        game.switchToHelpScreen();
     }
     
+    /**
+     * Called when the user clicks the exit button
+     */
+    public void respondToExitButton(){
+        //Prompt the user if they want to exit .
+        System.exit(0);
+    }
+    
+    /**
+     * Called when the user clicks the left button
+     */
+    public void respondToLeftButton(){
+        
+    }
     /**
      * Called when the user clicks a button to select a level.
      */    

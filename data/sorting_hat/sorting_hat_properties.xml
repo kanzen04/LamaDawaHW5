@@ -9,6 +9,8 @@
         <!-- ALL THE IMAGES TO BE USED IN THE GAME -->
         <property name="IMAGE_BACKGROUND_GAME"              value="./sorting_hat/BackgroundGame.png"></property>
         <property name="IMAGE_BACKGROUND_MENU"              value="./sorting_hat/BackgroundMenu.png"></property>
+        <property name="IMAGE_BACKGROUND_SETTINGS"          value="./sorting_hat/BackgroundSettings.png"></property>
+        <property name="IMAGE_BACKGROUND_HELP"              value="./sorting_hat/BackgroundHelp.png"></property>
         <property name="IMAGE_BUTTON_BACK"                  value="./sorting_hat/ButtonBack.png"></property>
         <property name="IMAGE_BUTTON_BACK_MOUSE_OVER"       value="./sorting_hat/ButtonBackMouseOver.png"></property>
         <property name="IMAGE_BUTTON_NEW"                   value="./sorting_hat/ButtonNewGame.png"></property>

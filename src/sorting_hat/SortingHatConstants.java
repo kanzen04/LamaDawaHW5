@@ -43,6 +43,9 @@ public class SortingHatConstants
     
     // WE'LL USE THESE STATES TO CONTROL SWITCHING BETWEEN THE TWO
     public static final String MENU_SCREEN_STATE = "MENU_SCREEN_STATE";
+    public static final String HELP_SCREEN_STATE = "HELP_SCREEN_STATE";
+    public static final String SETTINGS_SCREEN_STATE = "SETTINGS_SCREEN_STATE";
+    public static final String RESET_SCREEN_STATE = "RESET_SETTINGS_STATE";
     public static final String GAME_SCREEN_STATE = "GAME_SCREEN_STATE";    
 
     // ANIMATION SPEED
@@ -77,7 +80,7 @@ public class SortingHatConstants
     public static final int CONTROLS_MARGIN = 0;
     public static final int NEW_BUTTON_X = 0;
     public static final int NEW_BUTTON_Y = 0;
-    public static final int BACK_BUTTON_X = NEW_BUTTON_X + 130 + CONTROLS_MARGIN;
+    public static final int BACK_BUTTON_X = 1150;
     public static final int BACK_BUTTON_Y = 0;
     public static final int TILE_COUNT_X = BACK_BUTTON_X + 130 + CONTROLS_MARGIN;
     public static final int TILE_COUNT_Y = 0;
