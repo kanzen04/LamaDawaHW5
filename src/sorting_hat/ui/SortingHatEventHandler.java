@@ -68,7 +68,35 @@ public class SortingHatEventHandler
         // RESET THE GAME AND ITS DATA
         game.reset();        
     }
+    
+    /**
+     * Called when the user clicks the play button
+    */
+    public void respondToPlayButton(){
+        game.switchToGameScreen();
+    }
 
+    /**
+     * Called when the user clicks the reset button
+     */
+    public void respondToResetButton(){
+        
+    }
+    
+    /**
+     * Called when the user clicks the settings button
+     */
+    public void respondToSettingsButton(){
+        
+    }
+    
+    /**
+     * Called when the user clicks the help button
+     */
+    public void respondToHelpButton(){
+        
+    }
+    
     /**
      * Called when the user clicks a button to select a level.
      */    
@@ -96,9 +124,10 @@ public class SortingHatEventHandler
     public void respondToDisplayStatsRequest()
     {
         // DISPLAY THE STATS
-        game.displayStats();        
+        game.displayStats();
     }
-
+    
+    
     /**
      * Called when the user clicks the Undo button.
      */    
