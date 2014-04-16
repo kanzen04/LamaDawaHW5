@@ -51,6 +51,7 @@ public class SortingHatConstants
     public static final String SETTINGS_SCREEN_STATE = "SETTINGS_SCREEN_STATE";
     public static final String RESET_SCREEN_STATE = "RESET_SETTINGS_STATE";
     public static final String GAME_SCREEN_STATE = "GAME_SCREEN_STATE";    
+    public static final String LEVEL_PLAY_SCREEN_STATE = "LEVEL_PLAY_SCREEN_STATE";
 
     // ANIMATION SPEED
     public static final int FPS = 30;

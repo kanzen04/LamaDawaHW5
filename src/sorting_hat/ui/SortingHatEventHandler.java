@@ -1,6 +1,9 @@
 package sorting_hat.ui;
 
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import mini_game.Sprite;
+import mini_game.SpriteType;
 import properties_manager.PropertiesManager;
 import static sorting_hat.SortingHatConstants.GAME_SCREEN_STATE;
 import static sorting_hat.SortingHatConstants.MENU_SCREEN_STATE;
@@ -111,9 +114,56 @@ public class SortingHatEventHandler
     public void respondToLeftButton(){
         
     }
+    
+    /**
+     * Called when the user clicks the right button
+     */
+    public void respondToRightButton(){
+        
+    }
+    
+    /**
+     * Called when the user clicks the up button
+     */
+    public void respondToUpButton(){
+        
+    }
+    
+    /**
+     * Called when the user clicks the down button
+     */
+    public void respondToDownButton(){
+        
+    }
+    
+    /**
+     * Called when the user clicks the sound button
+     */
+
+        
+    public void respondToSoundButtonPress(){
+//        sT = new SpriteType("UP_BUTTON");
+//        img = loadImage("img/sorting_hat/UpButton.png");
+    }
     /**
      * Called when the user clicks a button to select a level.
      */    
+    public void respondToMusicButtonPress(){
+        
+    }
+    
+    /**
+     * Called when the user clicks the level button
+     * 
+     */
+    public void respongToLevelButtonPress(){
+        game.switchToLevelPlayScreen();
+    }
+    
+    /**
+     * C
+     * 
+     */
     public void respondToSelectLevelRequest(String levelFile)
     {
         // WE ONLY LET THIS HAPPEN IF THE MENU SCREEN IS VISIBLE

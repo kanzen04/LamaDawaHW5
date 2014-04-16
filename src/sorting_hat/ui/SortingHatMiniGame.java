@@ -53,7 +53,9 @@ public class SortingHatMiniGame extends MiniGame {
 
     // THE SCREEN CURRENTLY BEING PLAYED
     private String currentScreenState;
-
+    private Sprite s;
+    private SpriteType sT;
+   
     // ACCESSOR METHODS
     // - getPlayerRecord
     // - getErrorHandler
@@ -169,6 +171,8 @@ public class SortingHatMiniGame extends MiniGame {
         guiButtons.get("MUSIC_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.get("MUSIC_BUTTON").setEnabled(false);
 
+        guiButtons.get("LEVEL_BUTTON").setState(SortingHatTileState.VISIBLE_STATE.toString());
+        guiButtons.get("LEVEL_BUTTON").setEnabled(true);
         // DEACTIVATE THE LEVEL SELECT BUTTONS
         ArrayList<String> levels = props.getPropertyOptionsList(SortingHatPropertyType.LEVEL_OPTIONS);
         for (String level : levels) {
@@ -226,6 +230,8 @@ public class SortingHatMiniGame extends MiniGame {
         guiButtons.get("SOUND_BUTTON").setEnabled(false);
         guiButtons.get("MUSIC_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.get("MUSIC_BUTTON").setEnabled(false);
+        guiButtons.get("LEVEL_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("LEVEL_BUTTON").setEnabled(false);
 
         // ACTIVATE THE LEVEL SELECT BUTTONS
         // DEACTIVATE THE LEVEL SELECT BUTTONS
@@ -289,6 +295,8 @@ public class SortingHatMiniGame extends MiniGame {
         guiButtons.get("SOUND_BUTTON").setEnabled(false);
         guiButtons.get("MUSIC_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.get("MUSIC_BUTTON").setEnabled(false);
+        guiButtons.get("LEVEL_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("LEVEL_BUTTON").setEnabled(false);
 
         // ACTIVATE THE LEVEL SELECT BUTTONS
         // DEACTIVATE THE LEVEL SELECT BUTTONS
@@ -346,6 +354,8 @@ public class SortingHatMiniGame extends MiniGame {
         guiButtons.get("SOUND_BUTTON").setEnabled(true);
         guiButtons.get("MUSIC_BUTTON").setState(SortingHatTileState.VISIBLE_STATE.toString());
         guiButtons.get("MUSIC_BUTTON").setEnabled(true);
+         guiButtons.get("LEVEL_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("LEVEL_BUTTON").setEnabled(false);
 
         // ACTIVATE THE LEVEL SELECT BUTTONS
         // DEACTIVATE THE LEVEL SELECT BUTTONS
@@ -364,6 +374,67 @@ public class SortingHatMiniGame extends MiniGame {
 
         // MAKE THE CURRENT SCREEN THE MENU SCREEN
         currentScreenState = SETTINGS_SCREEN_STATE;
+
+    }
+    
+    public void switchToLevelPlayScreen() {
+        // CHANGE THE BACKGROUND
+        guiDecor.get(BACKGROUND_TYPE).setState(LEVEL_PLAY_SCREEN_STATE);
+
+        // DEACTIVATE THE TOOLBAR CONTROLS
+        guiButtons.get(NEW_GAME_BUTTON_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get(NEW_GAME_BUTTON_TYPE).setEnabled(false);
+        guiButtons.get(BACK_BUTTON_TYPE).setState(SortingHatTileState.VISIBLE_STATE.toString());
+        guiButtons.get(BACK_BUTTON_TYPE).setEnabled(true);
+        //  guiDecor.get(MISCASTS_COUNT_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        //  guiDecor.get(TIME_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get(STATS_BUTTON_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get(STATS_BUTTON_TYPE).setEnabled(false);
+        guiButtons.get(UNDO_BUTTON_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get(UNDO_BUTTON_TYPE).setEnabled(false);
+        //    guiDecor.get(ALGORITHM_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("PLAY_BUTTON_TYPE").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("PLAY_BUTTON_TYPE").setEnabled(false);
+        guiButtons.get("RESET_BUTTON_TYPE").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("RESET_BUTTON_TYPE").setEnabled(false);
+        guiButtons.get("SETTINGS_BUTTON_TYPE").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("SETTINGS_BUTTON_TYPE").setEnabled(false);
+        guiButtons.get("HELP_BUTTON_TYPE").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("HELP_BUTTON_TYPE").setEnabled(false);
+        guiButtons.get("LEFT_BUTTON").setState(SortingHatTileState.VISIBLE_STATE.toString());
+        guiButtons.get("LEFT_BUTTON").setEnabled(true);
+        guiButtons.get("RIGHT_BUTTON").setState(SortingHatTileState.VISIBLE_STATE.toString());
+        guiButtons.get("RIGHT_BUTTON").setEnabled(true);
+        guiButtons.get("UP_BUTTON").setState(SortingHatTileState.VISIBLE_STATE.toString());
+        guiButtons.get("UP_BUTTON").setEnabled(true);
+        guiButtons.get("DOWN_BUTTON").setState(SortingHatTileState.VISIBLE_STATE.toString());
+        guiButtons.get("DOWN_BUTTON").setEnabled(true);
+        guiButtons.get("SOUND_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("SOUND_BUTTON").setEnabled(false);
+        guiButtons.get("MUSIC_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("MUSIC_BUTTON").setEnabled(false);
+        guiButtons.get("LEVEL_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.get("LEVEL_BUTTON").setEnabled(false);
+        
+        
+        
+        // ACTIVATE THE LEVEL SELECT BUTTONS
+        // DEACTIVATE THE LEVEL SELECT BUTTONS
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        ArrayList<String> levels = props.getPropertyOptionsList(SortingHatPropertyType.LEVEL_OPTIONS);
+        for (String level : levels) {
+            //       guiButtons.get(level).setState(SortingHatTileState.VISIBLE_STATE.toString());
+            //       guiButtons.get(level).setEnabled(true);
+        }
+
+        // DEACTIVATE ALL DIALOGS
+        //    guiDialogs.get(WIN_DIALOG_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        //   guiDialogs.get(STATS_DIALOG_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
+        // HIDE THE TILES
+        ((SortingHatDataModel) data).enableTiles(false);
+
+        // MAKE THE CURRENT SCREEN THE MENU SCREEN
+        currentScreenState = LEVEL_PLAY_SCREEN_STATE;
 
     }
 
@@ -444,8 +515,7 @@ public class SortingHatMiniGame extends MiniGame {
         // WE'LL USE AND REUSE THESE FOR LOADING STUFF
         BufferedImage img;
         float x, y;
-        SpriteType sT;
-        Sprite s;
+        
 
         // FIRST PUT THE ICON IN THE WINDOW
         PropertiesManager props = PropertiesManager.getPropertiesManager();
@@ -469,6 +539,8 @@ public class SortingHatMiniGame extends MiniGame {
         sT.addState(HELP_SCREEN_STATE, img);
         img = loadImage(imgPath + props.getProperty(SortingHatPropertyType.IMAGE_BACKGROUND_SETTINGS));
         sT.addState(SETTINGS_SCREEN_STATE, img);
+        img = loadImage(imgPath + props.getProperty(SortingHatPropertyType.IMAGE_BACKGROUND_LEVEL_PLAY));
+        sT.addState(LEVEL_PLAY_SCREEN_STATE, img);
         s = new Sprite(sT, 0, 0, 0, 0, MENU_SCREEN_STATE);
         guiDecor.put(BACKGROUND_TYPE, s);
 
@@ -520,16 +592,7 @@ public class SortingHatMiniGame extends MiniGame {
         s = new Sprite(sT, BACK_BUTTON_X, BACK_BUTTON_Y, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.put(BACK_BUTTON_TYPE, s);
 
-        // THE PLAY BUTTON
-//        sT = new SpriteType("PLAY_BUTTON");
-//        img = loadImage("img/sorting_hat/PlayButton.png");
-//        sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
-//        img = loadImage("img/sorting_hat/PlayButtonMouseOver.png");
-//        sT.addState("MOUSE_OVER_STATE", img);
-//        s = new Sprite(sT,300,550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
-//        guiButtons.put("PLAY_BUTTON", s);
-        
-        //ALTERNATE METHOD FOR PLAY BUTTON
+        // PLAY BUTTON
         String playButton = props.getProperty(SortingHatPropertyType.IMAGE_BUTTON_PLAY);
         sT = new SpriteType(PLAY_BUTTON_TYPE);
         img = loadImage(imgPath + playButton);
@@ -538,18 +601,9 @@ public class SortingHatMiniGame extends MiniGame {
         img = loadImage(imgPath + playMouseOverButton);
         sT.addState(SortingHatTileState.MOUSE_OVER_STATE.toString(), img);
         s = new Sprite(sT, 300, 550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
-        guiButtons.put(PLAY_BUTTON_TYPE, s);        
-         
-//        // RESET BUTTON
-//        sT = new SpriteType("RESET_BUTTON");
-//        img = loadImage("img/sorting_hat/ResetButton.png");
-//        sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
-//        img = loadImage("img/sorting_hat/ResetButtonMouseOver.png");
-//        sT.addState("MOUSE_OVER_STATE", img);
-//        s = new Sprite(sT, 500, 550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
-//        guiButtons.put("RESET_BUTTON", s);
-        
-        //ALTERNATE FOR RESET BUTTON
+        guiButtons.put(PLAY_BUTTON_TYPE, s);
+
+        // RESET BUTTON
         String resetButton = props.getProperty(SortingHatPropertyType.IMAGE_BUTTON_RESET);
         sT = new SpriteType(RESET_BUTTON_TYPE);
         img = loadImage(imgPath + resetButton);
@@ -559,18 +613,8 @@ public class SortingHatMiniGame extends MiniGame {
         sT.addState(SortingHatTileState.MOUSE_OVER_STATE.toString(), img);
         s = new Sprite(sT, 500, 550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
         guiButtons.put(RESET_BUTTON_TYPE, s);
-       
 
-//        //SETTINGS BUTTON
-//        sT = new SpriteType("SETTINGS_BUTTON");
-//        img = loadImage("img/sorting_hat/SettingsButton.png");
-//        sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
-//        img = loadImage("img/sorting_hat/SettingsButtonMouseOver.png");
-//        sT.addState("MOUSE_OVER_STATE", img);
-//        s = new Sprite(sT, 700, 550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
-//        guiButtons.put("SETTINGS_BUTTON", s);
-        
-        // ALTERNATE FOR SETTINGS BUTTON
+        // SETTINGS BUTTON
         String settingsButton = props.getProperty(SortingHatPropertyType.IMAGE_BUTTON_SETTINGS);
         sT = new SpriteType(SETTINGS_BUTTON_TYPE);
         img = loadImage(imgPath + settingsButton);
@@ -581,15 +625,7 @@ public class SortingHatMiniGame extends MiniGame {
         s = new Sprite(sT, 700, 550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
         guiButtons.put(SETTINGS_BUTTON_TYPE, s);
 
-        //HELP BUTTON
-//        sT = new SpriteType("HELP_BUTTON");
-//        img = loadImage("img/sorting_hat/HelpButton.png");
-//        sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
-//        img = loadImage("img/sorting_hat/HelpButtonMouseOver.png");
-//        sT.addState("MOUSE_OVER_STATE", img);
-//        s = new Sprite(sT, 900, 550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
-//        guiButtons.put("HELP_BUTTON", s);
-
+        
         // ALTERNATE METHOD FOR HELP BUTTON
         String helpButton = props.getProperty(SortingHatPropertyType.IMAGE_BUTTON_HELP);
         sT = new SpriteType(HELP_BUTTON_TYPE);
@@ -600,7 +636,7 @@ public class SortingHatMiniGame extends MiniGame {
         sT.addState(SortingHatTileState.MOUSE_OVER_STATE.toString(), img);
         s = new Sprite(sT, 900, 550, 0, 0, SortingHatTileState.VISIBLE_STATE.toString());
         guiButtons.put(HELP_BUTTON_TYPE, s);
-        
+
         //EXIT BUTTON
         sT = new SpriteType("EXIT_BUTTON");
         img = loadImage("img/sorting_hat/ExitButton.png");
@@ -649,6 +685,8 @@ public class SortingHatMiniGame extends MiniGame {
         img = loadImage("img/sorting_hat/SoundButtonYes.png");
         sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
         sT.addState("MOUSE_OVER_STATE", img);
+        img = loadImage("img/sorting_hat/SoundButtonNo.png");
+        sT.addState("SELECTED_STATE", img);
         s = new Sprite(sT, 400, 300, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.put("SOUND_BUTTON", s);
 
@@ -660,6 +698,15 @@ public class SortingHatMiniGame extends MiniGame {
         s = new Sprite(sT, 400, 400, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.put("MUSIC_BUTTON", s);
 
+        
+        // LEVEL BUTTON
+        sT = new SpriteType("LEVEL_BUTTON");
+        img = loadImage("img/sorting_hat/LevelButton.png");
+        sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
+        sT.addState("MOUSE_OVER_STATE", img);
+        s = new Sprite(sT, 100, 300, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
+        guiButtons.put("LEVEL_BUTTON", s);
+        
         // AND THE MISCASTS COUNT
 //        String miscastCountContainer = props.getProperty(SortingHatPropertyType.IMAGE_DECOR_MISCASTS);
 //        sT = new SpriteType(MISCASTS_COUNT_TYPE);
@@ -667,7 +714,6 @@ public class SortingHatMiniGame extends MiniGame {
 //        sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
 //        s = new Sprite(sT, TILE_COUNT_X, TILE_COUNT_Y, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
 //        guiDecor.put(MISCASTS_COUNT_TYPE, s);
-        
         // AND THE TIME DISPLAY
         String timeContainer = props.getProperty(SortingHatPropertyType.IMAGE_DECOR_TIME);
         sT = new SpriteType(TIME_TYPE);
@@ -716,7 +762,8 @@ public class SortingHatMiniGame extends MiniGame {
         //  y = (viewport.getScreenHeight()/2) - (img.getHeight(null)/2);
         //  s = new Sprite(sT, x, y, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
         // guiDialogs.put(STATS_DIALOG_TYPE, s);
-        // AND THE WIN CONDITION DISPLAY
+        
+    // AND THE WIN CONDITION DISPLAY
 //        String winDisplay = props.getProperty(SortingHatPropertyType.IMAGE_DIALOG_WIN);
 //        sT = new SpriteType(WIN_DIALOG_TYPE);
 //        img = loadImageWithColorKey(imgPath + winDisplay, COLOR_KEY);
@@ -788,19 +835,23 @@ public class SortingHatMiniGame extends MiniGame {
             public void actionPerformed(ActionEvent ae) {
                 eventHandler.respondToResetButton();
             }
-        }) 
+        });
         
         // SETTINGS BUTTON EVENT HANDLER
          guiButtons.get("SETTINGS_BUTTON_TYPE").setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 eventHandler.respondToSettingsButton();
             }
-        }) // HELP BUTTON EVENT HANDLER         
+        });
+         
+        // HELP BUTTON EVENT HANDLER         
         guiButtons.get("HELP_BUTTON_TYPE").setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 eventHandler.respondToHelpButton();
             }
-        }) // EXIT BUTTON EVENT HANDLER
+        });
+        
+        // EXIT BUTTON EVENT HANDLER
         guiButtons.get("EXIT_BUTTON").setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 eventHandler.respondToExitButton();
@@ -812,31 +863,61 @@ public class SortingHatMiniGame extends MiniGame {
             public void actionPerformed(ActionEvent ae) {
                 eventHandler.respondToLeftButton();
             }
-        }) // RIGHT BUTTON EVENT HANDLER
-        guiButtons.get("LEFT_BUTTON").setActionListener(new ActionListener() {
+        });
+        // RIGHT BUTTON EVENT HANDLER
+        guiButtons.get("RIGHT_BUTTON").setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                eventHandler.respondToLeftButton();
+                eventHandler.respondToRightButton();
             }
-        }) // UP BUTTON EVENT HANDLER
-                guiButtons.get("LEFT_BUTTON").setActionListener(new ActionListener() {
+        });
+        // UP BUTTON EVENT HANDLER
+        guiButtons.get("UP_BUTTON").setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                eventHandler.respondToLeftButton();
+                eventHandler.respondToUpButton();
             }
-        }) // DOWN BUTTON EVENT HANDLER
-                // UNDO BUTTON EVENT HANDLER
-        guiButtons.get(UNDO_BUTTON_TYPE).setActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent ae) {
-                        eventHandler.respondToUndoRequest();
-                    }
-                });
+        });
+        // DOWN BUTTON EVENT HANDLER
+        guiButtons.get("DOWN_BUTTON").setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                eventHandler.respondToDownButton();
+            }
+        });
+        
+        // SOUND BUTTON EVENT HANDLER
+        guiButtons.get("SOUND_BUTTON").setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                eventHandler.respondToSoundButtonPress();
+            }
+        });
 
+        // MUSIC BUTTON EVENT HANDLER
+        guiButtons.get("MUSIC_BUTTON").setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                eventHandler.respondToMusicButtonPress();
+            }
+        });
+        
+        //LEVEL BUTTON EVENT HANDLER
+        guiButtons.get("LEVEL_BUTTON").setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                eventHandler.respongToLevelButtonPress();
+            }
+        });
+        
         // BACK BUTTON EVENT HANDLER
         guiButtons.get(BACK_BUTTON_TYPE).setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 eventHandler.respondToBackRequest();
             }
         });
-
+        
+        // UNDO BUTTON EVENT HANDLER
+        guiButtons.get(UNDO_BUTTON_TYPE).setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                eventHandler.respondToUndoRequest();
+            }
+        });
+        
         // KEY LISTENER - LET'S US PROVIDE CUSTOM RESPONSES
         this.setKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke) {
