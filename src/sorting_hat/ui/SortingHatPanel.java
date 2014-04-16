@@ -190,6 +190,8 @@ public class SortingHatPanel extends JPanel
             if (s.getSpriteType().getSpriteTypeID() != BACKGROUND_TYPE)
                 renderSprite(g, s);
         }
+        renderMapComponment(g, game.getGUIDecor().get(MAP));
+        
         
         // AND NOW RENDER THE BUTTONS
         Collection<Sprite> buttonSprites = game.getGUIButtons().values();
@@ -203,6 +205,14 @@ public class SortingHatPanel extends JPanel
     {
         g.setColor(COLOR_ALGORITHM_HEADER);
         
+    }
+    public void renderMapComponment(Graphics g , Sprite s){
+        Viewport view = data.getViewport();
+        if(s.getState().equals(SortingHatTileState.VISIBLE_STATE.toString())){
+             SpriteType bgST = s.getSpriteType();
+            Image img = bgST.getStateImage(s.getState());
+            g.drawImage(img,0,158,1272,697,view.getViewportX(),view.getViewportY(),view.getViewportX()+1275,view.getViewportY()+543,null);
+        }
     }
     
     public void renderSnake(Graphics g)

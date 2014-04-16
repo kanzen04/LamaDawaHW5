@@ -11,6 +11,8 @@
         <property name="IMAGE_BACKGROUND_MENU"              value="./sorting_hat/BackgroundMenu.png"></property>
         <property name="IMAGE_BACKGROUND_SETTINGS"          value="./sorting_hat/BackgroundSettings.png"></property>
         <property name="IMAGE_BACKGROUND_HELP"              value="./sorting_hat/BackgroundHelp.png"></property>
+        <property name="IMAGE_MAP"              value="./sorting_hat/BackgroundGameCopy.png"></property>
+
         <property name="IMAGE_BACKGROUND_LEVEL_PLAY"        value="./sorting_hat/BackgroundLevelPlay.png"></property>
         <property name="IMAGE_BUTTON_PLAY"                  value="./sorting_hat/ButtonPlay.png"></property>
         <property name="IMAGE_BUTTON_PLAY_MOUSE_OVER"       value="./sorting_hat/ButtonPlayMouseOver.png"></property>

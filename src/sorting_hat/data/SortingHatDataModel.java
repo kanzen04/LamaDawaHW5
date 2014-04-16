@@ -11,6 +11,7 @@ import sorting_hat.TheSortingHat.SortingHatPropertyType;
 import mini_game.MiniGame;
 import mini_game.MiniGameDataModel;
 import mini_game.SpriteType;
+import mini_game.Viewport;
 import properties_manager.PropertiesManager;
 import static sorting_hat.SortingHatConstants.*;
 import sorting_hat.ui.SortingHatMiniGame;
@@ -84,12 +85,15 @@ public class SortingHatDataModel extends MiniGameDataModel
     {
         // KEEP THE GAME FOR LATER
         miniGame = initMiniGame;
-
+        viewport = new Viewport();
         // INIT THESE FOR HOLDING MATCHED AND MOVING TILES
         stackTiles = new ArrayList();
         movingTiles = new ArrayList();
         tilesToSort = new ArrayList();
-
+        viewport.setGameWorldSize(1606,1033);
+        viewport.setNorthPanelHeight(89);
+        viewport.setScreenSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+        viewport.setViewportSize(1275,543);
         // NOTHING IS BEING DRAGGED YET
         selectedTile = null;
         selectedTileIndex = -1;

@@ -1,5 +1,6 @@
 package sorting_hat.ui;
 
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -17,7 +18,9 @@ import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.Icon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import sorting_hat.data.SortingHatDataModel;
 import mini_game.MiniGame;
 import mini_game.MiniGameState;
@@ -55,6 +58,8 @@ public class SortingHatMiniGame extends MiniGame {
     private String currentScreenState;
     private Sprite s;
     private SpriteType sT;
+    private Component frame;
+    private Icon icon;
    
     // ACCESSOR METHODS
     // - getPlayerRecord
@@ -118,7 +123,7 @@ public class SortingHatMiniGame extends MiniGame {
     public void displayStats() {
         // MAKE SURE ONLY THE PROPER DIALOG IS VISIBLE
         //guiDialogs.get(WIN_DIALOG_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
-        // guiDialogs.get(STATS_DIALOG_TYPE).setState(SortingHatTileState.VISIBLE_STATE.toString());
+        //guiDialogs.get(STATS_DIALOG_TYPE).setState(SortingHatTileState.VISIBLE_STATE.toString());
     }
 
     /**
@@ -170,7 +175,7 @@ public class SortingHatMiniGame extends MiniGame {
         guiButtons.get("SOUND_BUTTON").setEnabled(false);
         guiButtons.get("MUSIC_BUTTON").setState(SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.get("MUSIC_BUTTON").setEnabled(false);
-
+        guiDecor.get(MAP).setState(SortingHatTileState.VISIBLE_STATE.toString());
         guiButtons.get("LEVEL_BUTTON").setState(SortingHatTileState.VISIBLE_STATE.toString());
         guiButtons.get("LEVEL_BUTTON").setEnabled(true);
         // DEACTIVATE THE LEVEL SELECT BUTTONS
@@ -195,6 +200,7 @@ public class SortingHatMiniGame extends MiniGame {
     public void switchToSplashScreen() {
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(MENU_SCREEN_STATE);
+                guiDecor.get(MAP).setState(SortingHatTileState.INVISIBLE_STATE.toString());
 
         // DEACTIVATE THE TOOLBAR CONTROLS
         guiButtons.get(NEW_GAME_BUTTON_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
@@ -262,6 +268,7 @@ public class SortingHatMiniGame extends MiniGame {
     public void switchToHelpScreen() {
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(HELP_SCREEN_STATE);
+                guiDecor.get(MAP).setState(SortingHatTileState.INVISIBLE_STATE.toString());
 
         // DEACTIVATE THE TOOLBAR CONTROLS
         guiButtons.get(NEW_GAME_BUTTON_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
@@ -321,6 +328,7 @@ public class SortingHatMiniGame extends MiniGame {
     public void switchToSettingsScreen() {
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(SETTINGS_SCREEN_STATE);
+                guiDecor.get(MAP).setState(SortingHatTileState.INVISIBLE_STATE.toString());
 
         // DEACTIVATE THE TOOLBAR CONTROLS
         guiButtons.get(NEW_GAME_BUTTON_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
@@ -380,6 +388,7 @@ public class SortingHatMiniGame extends MiniGame {
     public void switchToLevelPlayScreen() {
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(LEVEL_PLAY_SCREEN_STATE);
+                guiDecor.get(MAP).setState(SortingHatTileState.INVISIBLE_STATE.toString());
 
         // DEACTIVATE THE TOOLBAR CONTROLS
         guiButtons.get(NEW_GAME_BUTTON_TYPE).setState(SortingHatTileState.INVISIBLE_STATE.toString());
@@ -417,6 +426,13 @@ public class SortingHatMiniGame extends MiniGame {
         guiButtons.get("LEVEL_BUTTON").setEnabled(false);
         
         
+        JOptionPane.showMessageDialog(frame,
+    "Entering Dodge City, KS \n" + 
+                "Rob the bank and getaway to earn $160\n" +
+                "Good Luck",
+    "Dodge City",
+    JOptionPane.INFORMATION_MESSAGE,
+    null);
         
         // ACTIVATE THE LEVEL SELECT BUTTONS
         // DEACTIVATE THE LEVEL SELECT BUTTONS
@@ -482,7 +498,7 @@ public class SortingHatMiniGame extends MiniGame {
         PropertiesManager props = PropertiesManager.getPropertiesManager();
         String audioPath = props.getProperty(SortingHatPropertyType.PATH_AUDIO);
         String cue = props.getProperty(audioCueType.toString());
-        audio.loadAudio(audioCueType.toString(), audioPath + cue);
+       audio.loadAudio(audioCueType.toString(), audioPath + cue);
     }
 
     /**
@@ -569,7 +585,7 @@ public class SortingHatMiniGame extends MiniGame {
 //            x += LEVEL_BUTTON_WIDTH + LEVEL_BUTTON_MARGIN;
 //        }
 
-        // ADD THE CONTROLS ALONG THE NORTH OF THE GAME SCREEN
+        
         // THEN THE NEW BUTTON
         String newButton = props.getProperty(SortingHatPropertyType.IMAGE_BUTTON_NEW);
         sT = new SpriteType(NEW_GAME_BUTTON_TYPE);
@@ -704,7 +720,7 @@ public class SortingHatMiniGame extends MiniGame {
         img = loadImage("img/sorting_hat/LevelButton.png");
         sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
         sT.addState("MOUSE_OVER_STATE", img);
-        s = new Sprite(sT, 100, 300, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
+        s = new Sprite(sT, 240, 359, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
         guiButtons.put("LEVEL_BUTTON", s);
         
         // AND THE MISCASTS COUNT
@@ -751,6 +767,12 @@ public class SortingHatMiniGame extends MiniGame {
         sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
         s = new Sprite(sT, TEMP_TILE_X, TEMP_TILE_Y, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
         guiDecor.put(ALGORITHM_TYPE, s);
+        
+        sT = new SpriteType(MAP);
+        img = loadImage(imgPath + props.getProperty(SortingHatPropertyType.IMAGE_MAP));
+        sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
+        s = new Sprite(sT,0,154,0,0,SortingHatTileState.INVISIBLE_STATE.toString());
+        guiDecor.put(MAP, s);
 
         // NOW ADD THE DIALOGS
         // AND THE STATS DISPLAY

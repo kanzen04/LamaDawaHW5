@@ -1,7 +1,9 @@
 package sorting_hat.ui;
 
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import javax.swing.JOptionPane;
 import mini_game.Sprite;
 import mini_game.SpriteType;
 import properties_manager.PropertiesManager;
@@ -21,6 +23,7 @@ public class SortingHatEventHandler
 {
     // THE SORTING HAT GAME, IT PROVIDES ACCESS TO EVERYTHING
     private SortingHatMiniGame game;
+    private Component frame;
 
     /**
      * Constructor, it just keeps the game for when the events happen.
@@ -239,9 +242,9 @@ public class SortingHatEventHandler
             }            
         }
         // WASD MOVES THE VIEWPORT
-        else if (keyCode == KeyEvent.VK_W)  data.getViewport().scroll(0,                -VIEWPORT_INC);
-        else if (keyCode == KeyEvent.VK_A)  data.getViewport().scroll(-VIEWPORT_INC,    0);
-        else if (keyCode == KeyEvent.VK_S)  data.getViewport().scroll(0,                VIEWPORT_INC);
-        else if (keyCode == KeyEvent.VK_D)  data.getViewport().scroll(VIEWPORT_INC,     0);
+        else if (keyCode == KeyEvent.VK_DOWN)  data.getViewport().scroll(0,                -VIEWPORT_INC);
+        else if (keyCode == KeyEvent.VK_RIGHT)  data.getViewport().scroll(-VIEWPORT_INC,    0);
+        else if (keyCode == KeyEvent.VK_UP)  data.getViewport().scroll(0,                VIEWPORT_INC);
+        else if (keyCode == KeyEvent.VK_LEFT)  data.getViewport().scroll(VIEWPORT_INC,     0);
     }
 }

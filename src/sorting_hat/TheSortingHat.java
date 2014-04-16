@@ -138,6 +138,7 @@ public class TheSortingHat
         /* TILE LOADING STUFF */
         LEVEL_OPTIONS,
         LEVEL_IMAGE_OPTIONS,
-        LEVEL_MOUSE_OVER_IMAGE_OPTIONS        
+        LEVEL_MOUSE_OVER_IMAGE_OPTIONS ,    
+        IMAGE_MAP,
     }
 }
