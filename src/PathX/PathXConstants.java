@@ -63,6 +63,18 @@ public class PathXConstants
     // TOTAL NUMBER OF LEVELS
     public static final int TOTAL_LEVEL = 3;
     
+    // RENDERING SETTINGS
+    public static final int INTERSECTION_RADIUS = 20;
+    public static final int INT_STROKE = 3;
+    public static final int ONE_WAY_TRIANGLE_HEIGHT = 40;
+    public static final int ONE_WAY_TRIANGLE_WIDTH = 60;
+    
+    // DEFAULT COLORS
+    public static final Color   INT_OUTLINE_COLOR   = Color.BLACK;
+    public static final Color   HIGHLIGHTED_COLOR = Color.YELLOW;
+    public static final Color   OPEN_INT_COLOR      = Color.GREEN;
+    public static final Color   CLOSED_INT_COLOR    = Color.RED;
+    
     // UI CONTROL SIZE AND POSITION SETTINGS
     public static final int WINDOW_WIDTH = 1280;
     public static final int WINDOW_HEIGHT = 720;

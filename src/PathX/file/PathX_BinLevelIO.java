@@ -14,7 +14,9 @@ import org.w3c.dom.Element;
 import PathX.PathX_Level;
 import PathX.PathX_Intersection;
 import PathX.PathX_Road;
-import pathX.level_editor.model.PXLE_Model;
+import PathX.data.PathXDataModel;
+
+
 
 
 /**
@@ -23,7 +25,7 @@ import pathX.level_editor.model.PXLE_Model;
  * 
  * @author  Richard McKenna
  */
-public class PathX_BinLevelIO implements PXLE_LevelIO
+public class PathX_BinLevelIO 
 {
     /**
      * Constructor for making our importer/exporter. Note that it
@@ -37,8 +39,8 @@ public class PathX_BinLevelIO implements PXLE_LevelIO
     /**
      * Reads the level data found in levelFile into levelToLoad.
      */
-    @Override
-    public boolean loadLevel(File levelFile, PXLE_Model model)
+    
+    public boolean loadLevel(File levelFile, PathXDataModel model)
     {
         try
         {
@@ -177,7 +179,7 @@ public class PathX_BinLevelIO implements PXLE_LevelIO
      * that it will be saved as an .xml file, which is an XML-format that will
      * conform to the schema.
      */
-    @Override
+    
     public boolean saveLevel(File levelFile, PathX_Level levelToSave)
     {
         try

@@ -13,10 +13,14 @@ import mini_game.MiniGameDataModel;
 import mini_game.SpriteType;
 import mini_game.Viewport;
 import properties_manager.PropertiesManager;
-import static PPathXPathXConstants.*;
-import PPathXui.PathXMiniGame;
-import PaPathXi.PathXPanel;
-import PatPathX.PathXButtonState;
+import static PathX.PathXConstants.*;
+import PathX.PathX_Road;
+import PathX.PathX_Level;
+import PathX.PathX_Intersection;
+import PathX.ui.PathXMiniGame;
+import PathX.ui.PathXPanel;
+import PathX.ui.PathXButtonState;
+import java.awt.Image;
 
 /**
  * This class manages the game data for The Sorting Hat.
@@ -25,7 +29,9 @@ import PatPathX.PathXButtonState;
  */
 public class PathXDataModel extends MiniGameDataModel
 {
-
+    // THIS IS THE LEVEL CURRENTLY BEING EDITING
+    PathX_Level level;
+    
     // THIS CLASS HAS A REFERERENCE TO THE MINI GAME SO THAT IT
     // CAN NOTIFY IT TO UPDATE THE DISPLAY WHEN THE DATA MODEL CHANGES
     private MiniGame miniGame;
@@ -34,13 +40,14 @@ public class PathXDataModel extends MiniGameDataModel
     private ArrayList<PathXTile> tilesToSort;
 
     // THE LEGAL TILES IN ORDER FROM LOW SORT INDEX TO HIGH
-    private ArrayList<SnakeCell> snake;
+   // private ArrayList<SnakeCell> snake;
 
     // GAME GRID AND TILE DATA
     private int gameTileWidth;
     private int gameTileHeight;
     private int numGameGridColumns;
     private int numGameGridRows;
+    PathX_Road selectedRoad;
 
     // THESE ARE THE TILES STACKED AT THE START OF THE GAME
     private ArrayList<PathXTile> stackTiles;
@@ -48,8 +55,51 @@ public class PathXDataModel extends MiniGameDataModel
     private int stackTilesY;
 
     // THESE ARE THE TILES THAT ARE MOVING AROUND, AND SO WE HAVE TO UPDATE
-    private ArrayList<PathXTile> movingTiles;
+    private ArrayList<PathXTile> movingTiles;    
+    
+    
+    //ACCESSOR METHOD
+    public PathX_Level                 getLevel()                          {   return level;                   }   
+    public Image                       getBackgroundImage()                {   return backgroundImage;         }
+    public PathX_Intersection          getStartRoadIntersection()          {   return startRoadIntersection;   }
+    public boolean                     isSelectedRoad(PathX_Road testRoad) {   return testRoad == selectedRoad; }
+    public PathX_Road                  getSelectedRoad()                   {   return selectedRoad;            }
+    public PathX_Intersection          getStartingLocation()               {   return level.startingLocation;  }
+    public Image                       getDesinationImage()                {   return destinationImage;        }
+    public PathX_Intersection          getDestination()                    {   return level.destination;       }
+    public Image                       getStartingLocationImage()          {   return startingLocationImage;   }
+    
+    public boolean isStartingLocation(PathX_Intersection testInt)     
+    {
+        return testInt == level.startingLocation; 
+    }
+    
+    public boolean isDestination(PathX_Intersection testInt)        
+    {  
+        return testInt == level.destination;                
+    }
+    
+    public boolean isSelectedIntersection(PathX_Intersection testIntersection)
+    {
+        return testIntersection == selectedIntersection;
+    }
 
+
+    // ITERATOR METHODS FOR GOING THROUGH THE GRAPH
+    public Iterator intersectionsIterator()
+    {
+        ArrayList<PathX_Intersection> intersections = level.getIntersections();
+        return intersections.iterator();
+    }
+    public Iterator roadsIterator()
+    {
+        ArrayList<PathX_Road> roads = level.roads;
+        return roads.iterator();
+    }
+    
+    // THESE ARE FOR TESTING WHAT EDIT MODE THE APP CURRENTLY IS IN
+    public boolean isAddingRoadEnd()        { return editMode == PXLE_EditMode.ADDING_ROAD_END; }
+    
     // THIS IS THE TILE THE USER IS DRAGGING
     private PathXTile selectedTile;
     private int selectedTileIndex;
@@ -68,12 +118,13 @@ public class PathXDataModel extends MiniGameDataModel
     private String currentLevel;
 
     // THE SORTING ALGORITHM WHICH GENERATES THE PROPER TRANSACTIONS
-    private SortingHatAlgorithm sortingAlgorithm;
+//    private SortingHatAlgorithm sortingAlgorithm;
 
     // THE PROPER TRANSACTIONS TO USE FOR COMPARISION AGAINST PLAYER MOVES
-    private ArrayList<SortTransaction> properTransactionOrder;
+//    private ArrayList<SortTransaction> properTransactionOrder;
     private int transactionCounter;
-
+    
+    
     /**
      * Constructor for initializing this data model, it will create the data
      * structures for storing tiles, but not the tile grid itself, that is
@@ -100,6 +151,7 @@ public class PathXDataModel extends MiniGameDataModel
         tempTile = null;
     }
 
+    
     // ACCESSOR METHODS
     public ArrayList<SnakeCell> getSnake()
     {
@@ -162,6 +214,39 @@ public class PathXDataModel extends MiniGameDataModel
         currentLevel = initCurrentLevel;
     }
 
+    /**
+     * Updates the background image.
+     */
+    public void updateBackgroundImage(String newBgImage)
+    {
+        // UPDATE THE LEVEL TO FIT THE BACKGROUDN IMAGE SIZE
+        level.backgroundImageFileName = newBgImage;
+        backgroundImage = view.loadImage(LEVELS_PATH + level.backgroundImageFileName);
+        int levelWidth = backgroundImage.getWidth(null);
+        int levelHeight = backgroundImage.getHeight(null);
+        viewport.setLevelDimensions(levelWidth, levelHeight);
+        view.getCanvas().repaint();
+    }
+    /**
+     * Updates the image used for the starting location and forces rendering.
+     */
+    public void updateStartingLocationImage(String newStartImage)
+    {
+        level.startingLocationImageFileName = newStartImage;
+        startingLocationImage = view.loadImage(LEVELS_PATH + level.startingLocationImageFileName);
+        view.getCanvas().repaint();
+    }
+    /**
+     * Updates the image used for the destination and forces rendering.
+     */
+    public void updateDestinationImage(String newDestImage)
+    {
+        level.destinationImageFileName = newDestImage;
+        destinationImage = view.loadImage(LEVELS_PATH + level.destinationImageFileName);
+        view.getCanvas().repaint();
+    }
+    
+    
     // INIT METHODS - AFTER CONSTRUCTION, THESE METHODS SETUP A GAME FOR USE
     // - initLevel
     // - initTiles
@@ -180,11 +265,11 @@ public class PathXDataModel extends MiniGameDataModel
         viewport.updateViewportBoundaries();
 
         // INITIALIZE THE PLAYER RECORD IF NECESSARY
-        SortingHatRecord playerRecord = ((PathXMiniGame) miniGame).getPlayerRecord();
-        if (!playerRecord.hasLevel(levelName))
-        {
-            playerRecord.addLevel(levelName, initSortingAlgorithm.name);
-        }
+//        SortingHatRecord playerRecord = ((PathXMiniGame) miniGame).getPlayerRecord();
+//        if (!playerRecord.hasLevel(levelName))
+//        {
+//            playerRecord.addLevel(levelName, initSortingAlgorithm.name);
+//        }
     }
 
     /**
@@ -674,10 +759,10 @@ public class PathXDataModel extends MiniGameDataModel
         // RECORD IT AS A WIN
         if (this.badSpellsCounter > 0)
         {
-            ((PathXMiniGame) miniGame).getPlayerRecord().addWin(currentLevel);
+            //((PathXMiniGame) miniGame).getPlayerRecord().addWin(currentLevel);
         } else
         {
-            ((PathXMiniGame) miniGame).getPlayerRecord().addPerfectWin(currentLevel, gameTime);
+            //((PathXMiniGame) miniGame).getPlayerRecord().addPerfectWin(currentLevel, gameTime);
         }
 
         // SAVE PLAYER DATA
@@ -701,7 +786,7 @@ public class PathXDataModel extends MiniGameDataModel
     public void endGameAsLoss()
     {
         // ADD A LOSS
-        ((PathXMiniGame) miniGame).getPlayerRecord().addLoss(currentLevel);
+        //((PathXMiniGame) miniGame).getPlayerRecord().addLoss(currentLevel);
  
         // SAVE PLAYER DATA
         ((PathXMiniGame) miniGame).savePlayerRecord();        
@@ -842,3 +927,4 @@ public class PathXDataModel extends MiniGameDataModel
     {
     }
 }
+

@@ -12,6 +12,7 @@ import properties_manager.PropertiesManager;
  */
 public class PathXErrorHandler
 {
+    
     // WE'LL CENTER DIALOG BOXES OVER THE WINDOW, SO WE NEED THIS
     private JFrame window;
 
@@ -25,6 +26,8 @@ public class PathXErrorHandler
         // KEEP THE WINDOW FOR LATER
         window = initWindow;
     }
+    
+    private PathXErrorHandler errorHandler;
 
     /**
      * This method provides all error feedback. It gets the feedback text,

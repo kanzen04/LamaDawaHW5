@@ -12,7 +12,6 @@ import static PathX.PathXConstants.LEVEL_PLAY_SCREEN_STATE;
 import static PathX.PathXConstants.MENU_SCREEN_STATE;
 import static PathX.PathXConstants.VIEWPORT_INC;
 import PathX.PathX;
-import PathX.data.SortTransaction;
 import PathX.data.PathXDataModel;
 import PathX.file.PathXFileManager;
 import mini_game.Viewport;
@@ -222,7 +221,7 @@ public class PathXEventHandler {
         // THIS IS ONLY RELEVANT TO THE IN-GAME STATE
         if (game.isCurrentScreenState(GAME_SCREEN_STATE)) {
             PathXDataModel data = (PathXDataModel) game.getDataModel();
-            data.undoLastMove();
+            //data.undoLastMove();
         }
     }
 
