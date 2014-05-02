@@ -21,13 +21,13 @@ public class PathX_Level
     ArrayList<PathX_Intersection> intersections;
 
     // COMPLETE LIST OF ROADS SORTED BY STARTING INTERSECTION LOCATION LEFT TO RIGHT
-    ArrayList<PathX_Road> roads;
-
+    public ArrayList<PathX_Road> roads;
+    
     // THE STARTING LOCATION AND DESTINATION
-    PathX_Intersection startingLocation;
-    String backgroundImageFileName;
-    PathX_Intersection destination;
-    String destinationImageFileName;
+    public PathX_Intersection startingLocation;
+    public String backgroundImageFileName;
+    public PathX_Intersection destination;
+    public String destinationImageFileName;
 
     // THE AMOUNT OF MONEY TO BE EARNED BY THE LEVEL
     int money;

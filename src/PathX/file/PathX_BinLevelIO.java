@@ -15,6 +15,7 @@ import PathX.PathX_Level;
 import PathX.PathX_Intersection;
 import PathX.PathX_Road;
 import PathX.data.PathXDataModel;
+import PathX.PathXConstants;
 
 
 
@@ -40,12 +41,15 @@ public class PathX_BinLevelIO
      * Reads the level data found in levelFile into levelToLoad.
      */
     
-    public boolean loadLevel(File levelFile, PathXDataModel model)
+    public PathX_Level loadLevel(File levelFile, PathXDataModel model)
     {
+        PathX_Level levelToLoad = new PathX_Level();
         try
         {
             // WE'LL FILL IN SOME OF THE LEVEL OURSELVES
-            PathX_Level levelToLoad = model.getLevel();
+            //PathX_Level levelToLoad = model.getLevel();
+            //levelFile= new File(PathXConstants.PATH_DATA+PathXConstants.LEVELS_PATH+"Adobe.bin");
+           // levelToLoad= new PathX_Level();
             levelToLoad.reset();
 
             // LET'S USE A FAST LOADING TECHNIQUE. WE'LL LOAD ALL OF THE
@@ -113,10 +117,12 @@ public class PathX_BinLevelIO
         catch(IOException e)
         {
             // LEVEL DIDN'T LOAD PROPERLY
-            return false;
+            return levelToLoad;
+//              miniGame.getErrorHandler().processError(PathXPropertyType.TEXT_ERROR_LOADING_LEVEL);
+            
         }
         // LEVEL LOADED PROPERLY
-        return true;
+            return levelToLoad;
     }
     
     // PRIVATE HELPER METHOD FOR LOADING INTERSECTIONS INTO OUR LEVEL

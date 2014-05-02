@@ -12,8 +12,11 @@ import static PathX.PathXConstants.LEVEL_PLAY_SCREEN_STATE;
 import static PathX.PathXConstants.MENU_SCREEN_STATE;
 import static PathX.PathXConstants.VIEWPORT_INC;
 import PathX.PathX;
+import PathX.PathX_Level;
 import PathX.data.PathXDataModel;
 import PathX.file.PathXFileManager;
+import PathX.file.PathX_BinLevelIO;
+import java.io.File;
 import mini_game.Viewport;
 
 /**
@@ -168,9 +171,21 @@ public class PathXEventHandler {
      * Called when the user clicks the level button
      *
      */
-    public void respondToLevelButtonPress() {
-        game.switchToLevelPlayScreen();
-    }
+//    public void respondToLevelButtonPress(String levelFile) {
+//
+//        if (game.isCurrentScreenState(GAME_SCREEN_STATE)) {
+//            // GET THE GAME'S DATA MODEL, WHICH IS ALREADY LOCKED FOR US
+//            //  PathX_Level data = (PathXDataModel) game.getDataModel();
+//
+//            // UPDATE THE DATA
+//            PathXFileManager fileManager = game.getFileManager();
+//            fileManager.loadLevel(levelFile);
+//
+//           // data.reset(game);
+//            // GO TO THE GAME
+//            game.switchToLevelPlayScreen();
+//        }
+//    }
 
     /**
      * Called when the user presses the pause button
@@ -190,19 +205,24 @@ public class PathXEventHandler {
      * C
      *
      */
-    public void respondToSelectLevelRequest(String levelFile) {
+    public void respondToSelectLevelRequest(File levelFile) {
+
         // WE ONLY LET THIS HAPPEN IF THE MENU SCREEN IS VISIBLE
-        if (game.isCurrentScreenState(MENU_SCREEN_STATE)) {
+        if (game.isCurrentScreenState(GAME_SCREEN_STATE)) {
             // GET THE GAME'S DATA MODEL, WHICH IS ALREADY LOCKED FOR US
             PathXDataModel data = (PathXDataModel) game.getDataModel();
-
+            
             // UPDATE THE DATA
-            PathXFileManager fileManager = game.getFileManager();
-            fileManager.loadLevel(levelFile);
-            data.reset(game);
+//            fileManager.loadlevel(levelFile, data);
+            
+            
+            PathX_Level fileManager2 = game.getFileManager2().loadLevel(levelFile, data);
 
-            // GO TO THE GAME
+            
             game.switchToGameScreen();
+//   fileManager.loadLevel(levelFile);
+            // data.reset(game);
+            // GO TO THE GAME
         }
     }
 
@@ -211,6 +231,7 @@ public class PathXEventHandler {
      */
     public void respondToDisplayStatsRequest() {
         // DISPLAY THE STATS
+
         game.displayStats();
     }
 
@@ -231,13 +252,13 @@ public class PathXEventHandler {
     public void respondToKeyPress(int keyCode) {
         PathXDataModel data = (PathXDataModel) game.getDataModel();
         Viewport vp = data.getViewport();
-        if (keyCode == KeyEvent.VK_DOWN && vp.getViewportY()<220) {
+        if (keyCode == KeyEvent.VK_DOWN && vp.getViewportY() < 220) {
             data.getViewport().scroll(0, VIEWPORT_INC);
-        } else if (keyCode == KeyEvent.VK_RIGHT&& vp.getViewportX()<80) {
+        } else if (keyCode == KeyEvent.VK_RIGHT && vp.getViewportX() < 80) {
             data.getViewport().scroll(VIEWPORT_INC, 0);
-        } else if (keyCode == KeyEvent.VK_UP && vp.getViewportY()>0) {
+        } else if (keyCode == KeyEvent.VK_UP && vp.getViewportY() > 0) {
             data.getViewport().scroll(0, -VIEWPORT_INC);
-        } else if (keyCode == KeyEvent.VK_LEFT && vp.getViewportX()>0) {
+        } else if (keyCode == KeyEvent.VK_LEFT && vp.getViewportX() > 0) {
             data.getViewport().scroll(-VIEWPORT_INC, 0);
         }
     }

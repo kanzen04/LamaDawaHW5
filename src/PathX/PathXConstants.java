@@ -19,6 +19,7 @@ public class PathXConstants
     public static String PROPERTIES_FILE_NAME = "properties.xml";
     public static String PROPERTIES_SCHEMA_FILE_NAME = "properties_schema.xsd";    
     public static String PATH_DATA = "./data/";
+      public static final String  LEVELS_PATH             = PATH_DATA + "sorting_hat/";
     
     // THESE ARE THE TYPES OF CONTROLS, WE USE THESE CONSTANTS BECAUSE WE'LL
     // STORE THEM BY TYPE, SO THESE WILL PROVIDE A MEANS OF IDENTIFYING THEM
@@ -48,6 +49,7 @@ public class PathXConstants
     public static final String WIN_DIALOG_TYPE = "WIN_DIALOG_TYPE";
     public static final String STATS_DIALOG_TYPE = "STATS_DIALOG_TYPE";
     public static final String EXIT_DIALOG_TYPE = "EXIT_DIALOG_TYPE";
+    public static final String LEVEL_LOADED_TYPE = "LEVEL_LOADED_TYPE";
     
     // WE'LL USE THESE STATES TO CONTROL SWITCHING BETWEEN THE TWO
     public static final String MENU_SCREEN_STATE = "MENU_SCREEN_STATE";

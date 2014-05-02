@@ -32,16 +32,30 @@ public class PathXDataModel extends MiniGameDataModel
     // THIS IS THE LEVEL CURRENTLY BEING EDITING
     PathX_Level level;
     
+    // WE ONLY NEED TO TURN THIS ON ONCE
+    Image backgroundImage;
+    Image startingLocationImage;
+    Image destinationImage;
+    
+    // WE'LL USE THIS WHEN WE'RE ADDING A NEW ROAD
+    PathX_Intersection startRoadIntersection;
+    PathX_Intersection selectedIntersection;
+    
     // THIS CLASS HAS A REFERERENCE TO THE MINI GAME SO THAT IT
     // CAN NOTIFY IT TO UPDATE THE DISPLAY WHEN THE DATA MODEL CHANGES
     private MiniGame miniGame;
 
     // THIS STORES THE TILES ON THE GRID DURING THE GAME
     private ArrayList<PathXTile> tilesToSort;
-
+    
+    public void setlevel(PathX_Level lev){
+        level = lev;
+    }
     // THE LEGAL TILES IN ORDER FROM LOW SORT INDEX TO HIGH
    // private ArrayList<SnakeCell> snake;
 
+    //PathX_View view;
+    
     // GAME GRID AND TILE DATA
     private int gameTileWidth;
     private int gameTileHeight;
@@ -64,6 +78,11 @@ public class PathXDataModel extends MiniGameDataModel
     public PathX_Intersection          getStartRoadIntersection()          {   return startRoadIntersection;   }
     public boolean                     isSelectedRoad(PathX_Road testRoad) {   return testRoad == selectedRoad; }
     public PathX_Road                  getSelectedRoad()                   {   return selectedRoad;            }
+
+    /**
+     *
+     * @return
+     */
     public PathX_Intersection          getStartingLocation()               {   return level.startingLocation;  }
     public Image                       getDesinationImage()                {   return destinationImage;        }
     public PathX_Intersection          getDestination()                    {   return level.destination;       }
@@ -71,7 +90,7 @@ public class PathXDataModel extends MiniGameDataModel
     
     public boolean isStartingLocation(PathX_Intersection testInt)     
     {
-        return testInt == level.startingLocation; 
+        return testInt == level.startingLocation;           
     }
     
     public boolean isDestination(PathX_Intersection testInt)        
@@ -98,7 +117,7 @@ public class PathXDataModel extends MiniGameDataModel
     }
     
     // THESE ARE FOR TESTING WHAT EDIT MODE THE APP CURRENTLY IS IN
-    public boolean isAddingRoadEnd()        { return editMode == PXLE_EditMode.ADDING_ROAD_END; }
+    //public boolean isAddingRoadEnd()        { return editMode == PXLE_EditMode.ADDING_ROAD_END; }
     
     // THIS IS THE TILE THE USER IS DRAGGING
     private PathXTile selectedTile;
@@ -153,10 +172,10 @@ public class PathXDataModel extends MiniGameDataModel
 
     
     // ACCESSOR METHODS
-    public ArrayList<SnakeCell> getSnake()
-    {
-        return snake;
-    }
+//    public ArrayList<SnakeCell> getSnake()
+//    {
+//        return snake;
+//    }
 
     public int getBadSpellsCounter()
     {
@@ -212,8 +231,9 @@ public class PathXDataModel extends MiniGameDataModel
     public void setCurrentLevel(String initCurrentLevel)
     {
         currentLevel = initCurrentLevel;
-    }
-
+    
+}
+ //   public boolean isAddingRoadEnd()        { return editMode == PXLE_EditMode.ADDING_ROAD_END; }
     /**
      * Updates the background image.
      */
@@ -221,20 +241,20 @@ public class PathXDataModel extends MiniGameDataModel
     {
         // UPDATE THE LEVEL TO FIT THE BACKGROUDN IMAGE SIZE
         level.backgroundImageFileName = newBgImage;
-        backgroundImage = view.loadImage(LEVELS_PATH + level.backgroundImageFileName);
+       // backgroundImage = view.loadImage(LEVELS_PATH + level.backgroundImageFileName);
         int levelWidth = backgroundImage.getWidth(null);
         int levelHeight = backgroundImage.getHeight(null);
-        viewport.setLevelDimensions(levelWidth, levelHeight);
-        view.getCanvas().repaint();
+      //  viewport.setLevelDimensions(levelWidth, levelHeight);
+       // view.getCanvas().repaint();
     }
     /**
      * Updates the image used for the starting location and forces rendering.
      */
     public void updateStartingLocationImage(String newStartImage)
     {
-        level.startingLocationImageFileName = newStartImage;
-        startingLocationImage = view.loadImage(LEVELS_PATH + level.startingLocationImageFileName);
-        view.getCanvas().repaint();
+       // level.startingLocationImageFileName = newStartImage;
+      //  startingLocationImage = view.loadImage(LEVELS_PATH + level.startingLocationImageFileName);
+       // view.getCanvas().repaint();
     }
     /**
      * Updates the image used for the destination and forces rendering.
@@ -242,8 +262,8 @@ public class PathXDataModel extends MiniGameDataModel
     public void updateDestinationImage(String newDestImage)
     {
         level.destinationImageFileName = newDestImage;
-        destinationImage = view.loadImage(LEVELS_PATH + level.destinationImageFileName);
-        view.getCanvas().repaint();
+//        destinationImage = view.loadImage(LEVELS_PATH + level.destinationImageFileName);
+       // view.getCanvas().repaint();
     }
     
     
@@ -255,22 +275,22 @@ public class PathXDataModel extends MiniGameDataModel
      * Called after a level has been selected, it initializes the grid so that
      * it is the proper dimensions.
      */
-    public void initLevel(String levelName, ArrayList<SnakeCell> initSnake, SortingHatAlgorithm initSortingAlgorithm)
-    {
-        // KEEP THE TILE ORDER AND SORTING ALGORITHM FOR LATER
-        snake = initSnake;
-        sortingAlgorithm = initSortingAlgorithm;
-
-        // UPDATE THE VIEWPORT IF WE ARE SCROLLING (WHICH WE'RE NOT)
-        viewport.updateViewportBoundaries();
-
-        // INITIALIZE THE PLAYER RECORD IF NECESSARY
-//        SortingHatRecord playerRecord = ((PathXMiniGame) miniGame).getPlayerRecord();
-//        if (!playerRecord.hasLevel(levelName))
-//        {
-//            playerRecord.addLevel(levelName, initSortingAlgorithm.name);
-//        }
-    }
+//    public void initLevel(String levelName, ArrayList<SnakeCell> initSnake, SortingHatAlgorithm initSortingAlgorithm)
+//    {
+//        // KEEP THE TILE ORDER AND SORTING ALGORITHM FOR LATER
+//        snake = initSnake;
+//        sortingAlgorithm = initSortingAlgorithm;
+//
+//        // UPDATE THE VIEWPORT IF WE ARE SCROLLING (WHICH WE'RE NOT)
+//        viewport.updateViewportBoundaries();
+//
+//        // INITIALIZE THE PLAYER RECORD IF NECESSARY
+////        SortingHatRecord playerRecord = ((PathXMiniGame) miniGame).getPlayerRecord();
+////        if (!playerRecord.hasLevel(levelName))
+////        {
+////            playerRecord.addLevel(levelName, initSortingAlgorithm.name);
+////        }
+//    }
 
     /**
      * This method loads the tiles, creating an individual sprite for each. Note
@@ -565,10 +585,10 @@ public class PathXDataModel extends MiniGameDataModel
      * Gets the next swap operation using the list generated by the proper
      * algorithm.
      */
-    public SortTransaction getNextSwapTransaction()
-    {
-        return properTransactionOrder.get(transactionCounter);
-    }
+//    public SortTransaction getNextSwapTransaction()
+//    {
+//        return properTransactionOrder.get(transactionCounter);
+//    }
 
     /**
      * Swaps the tiles at the two indices.
@@ -603,63 +623,63 @@ public class PathXDataModel extends MiniGameDataModel
         transactionCounter++;
 
         // HAS THE PLAYER WON?
-        if (transactionCounter == this.properTransactionOrder.size())
-        {
-            // YUP UPDATE EVERYTHING ACCORDINGLY
-            endGameAsWin();
-        }
+//        if (transactionCounter == this.properTransactionOrder.size())
+//        {
+//            // YUP UPDATE EVERYTHING ACCORDINGLY
+//            endGameAsWin();
+//        }
     }
 
     /**
      * This method updates all the necessary state information to process the
      * swap transaction.
      */
-    public void processSwap(int index1, int index2)
-    {
-        // FIRST CHECK AND SEE IF IT'S THE PROPER SWAP AT THIS TIME
-        SortTransaction potentialSwap = new SortTransaction(index1, index2);
-        SortTransaction correctSwap = properTransactionOrder.get(transactionCounter);
-
-        // IT'S A GOOD SWAP, MEANING IT'S WHAT THE SORTING ALGORITHM
-        // IS SUPPOSED TO DO
-        if (potentialSwap.equals(correctSwap))
-        {
-            // SWAP THEM
-            swapTiles(index1, index2);
-
-            // DESELECT THE SELECTED TILE
-            selectedTile.setState(PathXButtonState.VISIBLE_STATE.toString());
-            selectedTile = null;
-            selectedTileIndex = -1;
-
-            // PLAY THE GOOD MOVE SOUND EFFECT
-            miniGame.getAudio().play(SortingHatPropertyType.AUDIO_CUE_GOOD_MOVE.toString(), false);
-        } 
-        else
-        {
-            // BAD MOVE
-            badSpellsCounter++;
-
-            // PLAY THE BAD MOVE SOUND EFFECT
-            miniGame.getAudio().play(SortingHatPropertyType.AUDIO_CUE_BAD_MOVE.toString(), false);
-        }
-    }
+//    public void processSwap(int index1, int index2)
+//    {
+//        // FIRST CHECK AND SEE IF IT'S THE PROPER SWAP AT THIS TIME
+//        SortTransaction potentialSwap = new SortTransaction(index1, index2);
+//        SortTransaction correctSwap = properTransactionOrder.get(transactionCounter);
+//
+//        // IT'S A GOOD SWAP, MEANING IT'S WHAT THE SORTING ALGORITHM
+//        // IS SUPPOSED TO DO
+//        if (potentialSwap.equals(correctSwap))
+//        {
+//            // SWAP THEM
+//            swapTiles(index1, index2);
+//
+//            // DESELECT THE SELECTED TILE
+//            selectedTile.setState(PathXButtonState.VISIBLE_STATE.toString());
+//            selectedTile = null;
+//            selectedTileIndex = -1;
+//
+//            // PLAY THE GOOD MOVE SOUND EFFECT
+//            miniGame.getAudio().play(SortingHatPropertyType.AUDIO_CUE_GOOD_MOVE.toString(), false);
+//        } 
+//        else
+//        {
+//            // BAD MOVE
+//            badSpellsCounter++;
+//
+//            // PLAY THE BAD MOVE SOUND EFFECT
+//            miniGame.getAudio().play(SortingHatPropertyType.AUDIO_CUE_BAD_MOVE.toString(), false);
+//        }
+//    }
 
     /**
      * This method undoes the previous move, sending the two tiles on top of the
      * tile stack back to the game grid.
      */
-    public void undoLastMove()
-    {
-        // LET'S WALK BACK A SWAP
-        if (transactionCounter > 0)
-        {
-            transactionCounter--;
-            SortTransaction moveToUndo = properTransactionOrder.get(transactionCounter);
-            swapTiles(moveToUndo.getFromIndex(), moveToUndo.getToIndex());
-            transactionCounter--;
-        }
-    }
+//    public void undoLastMove()
+//    {
+//        // LET'S WALK BACK A SWAP
+//        if (transactionCounter > 0)
+//        {
+//            transactionCounter--;
+//            SortTransaction moveToUndo = properTransactionOrder.get(transactionCounter);
+//            swapTiles(moveToUndo.getFromIndex(), moveToUndo.getToIndex());
+//            transactionCounter--;
+//        }
+//    }
     
     // THIS HELPER METHOD FINDS THE TILE IN THE DATA STRUCTURE WITH
     // THE GRID LOCATION OF col, row, AND RETURNS IT'S INDEX
@@ -738,7 +758,7 @@ public class PathXDataModel extends MiniGameDataModel
             // SELECTED, SO SWAP THEM
             else
             {
-                processSwap(index, selectedTileIndex);
+               // processSwap(index, selectedTileIndex);
             }
         }
     }
@@ -817,22 +837,22 @@ public class PathXDataModel extends MiniGameDataModel
         }
 
         // SEND THE TILES OFF TO THE GRID TO BE SORTED
-        for (int i = 0; i < snake.size(); i++)
-        {
-            PathXTile tileToPlace = stackTiles.remove(stackTiles.size() - 1);
-            tilesToSort.add(tileToPlace);
-            SnakeCell sC = snake.get(i);
-            int targetX = this.calculateGridTileX(sC.col);
-            int targetY = this.calculateGridTileY(sC.row);
-            tileToPlace.setTarget(targetX, targetY);
-            tileToPlace.setGridCell(sC.col, sC.row);
-            tileToPlace.startMovingToTarget(MAX_TILE_VELOCITY);
-            tileToPlace.setState(PathXButtonState.VISIBLE_STATE.toString());
-            movingTiles.add(tileToPlace);
-        }
+//        for (int i = 0; i < snake.size(); i++)
+//        {
+//            PathXTile tileToPlace = stackTiles.remove(stackTiles.size() - 1);
+//            tilesToSort.add(tileToPlace);
+//            SnakeCell sC = snake.get(i);
+//            int targetX = this.calculateGridTileX(sC.col);
+//            int targetY = this.calculateGridTileY(sC.row);
+//            tileToPlace.setTarget(targetX, targetY);
+//            tileToPlace.setGridCell(sC.col, sC.row);
+//            tileToPlace.startMovingToTarget(MAX_TILE_VELOCITY);
+//            tileToPlace.setState(PathXButtonState.VISIBLE_STATE.toString());
+//            movingTiles.add(tileToPlace);
+//        }
 
         // GENERATE THE PROPER SORT TRANSACTIONS
-        properTransactionOrder = sortingAlgorithm.generateSortTransactions();
+       // properTransactionOrder = sortingAlgorithm.generateSortTransactions();
         this.transactionCounter = 0;
 
         // START THE CLOCK

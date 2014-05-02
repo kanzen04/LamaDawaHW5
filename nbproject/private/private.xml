@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/file/PathX_BinLevelIO.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/ui/PathXMiniGame.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/PathXConstants.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/PathX_Level.java</file>
             <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/data/PathXDataModel.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/ui/PathXPanel.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/ui/PathXEventHandler.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/LamaDawaHW5/src/PathX/file/PathX_BinLevelIO.java</file>
         </group>
     </open-files>
 </project-private>

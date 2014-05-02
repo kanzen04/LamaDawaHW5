@@ -220,15 +220,15 @@ public class PathXPanel extends JPanel
         }
         
         // NOW DRAW THE LINE BEING ADDED, IF THERE IS ONE
-        if (model.isAddingRoadEnd())
-        {
-            PathX_Intersection startRoadIntersection = model.getStartRoadIntersection();
-            recyclableLine.x1 = startRoadIntersection.x-viewport.x;
-            recyclableLine.y1 = startRoadIntersection.y-viewport.y;
-            recyclableLine.x2 = model.getLastMouseX()-viewport.x;
-            recyclableLine.y2 = model.getLastMouseY()-viewport.y;
-            g2.draw(recyclableLine);
-        }
+//        if (model.isAddingRoadEnd())
+//        {
+//            PathX_Intersection startRoadIntersection = model.getStartRoadIntersection();
+//            recyclableLine.x1 = startRoadIntersection.x-viewport.x;
+//            recyclableLine.y1 = startRoadIntersection.y-viewport.y;
+//            recyclableLine.x2 = model.getLastMouseX()-viewport.x;
+//            recyclableLine.y2 = model.getLastMouseY()-viewport.y;
+//            g2.draw(recyclableLine);
+//        }
 
         // AND RENDER THE SELECTED ONE, IF THERE IS ONE
         PathX_Road selectedRoad = model.getSelectedRoad();
@@ -319,6 +319,7 @@ public class PathXPanel extends JPanel
     // NEEDED BY THE STARTING LOCATION AND THE DESTINATION
     private void renderIntersectionImage(Graphics2D g2, Image img, PathX_Intersection i)
     {
+        Viewport viewport=model.getViewport();
         // CALCULATE WHERE TO RENDER IT
         int w = img.getWidth(null);
         int h = img.getHeight(null);
