@@ -41,6 +41,9 @@ public class PathXDataModel extends MiniGameDataModel
     PathX_Intersection startRoadIntersection;
     PathX_Intersection selectedIntersection;
     
+    // A REFERENCE TO THE CURRENT LEVEL
+    public PathX_Level currentLevel;
+    
     // THIS CLASS HAS A REFERERENCE TO THE MINI GAME SO THAT IT
     // CAN NOTIFY IT TO UPDATE THE DISPLAY WHEN THE DATA MODEL CHANGES
     private MiniGame miniGame;
@@ -133,9 +136,6 @@ public class PathXDataModel extends MiniGameDataModel
     private GregorianCalendar startTime;
     private GregorianCalendar endTime;
 
-    // LEVEL
-    private String currentLevel;
-
     // THE SORTING ALGORITHM WHICH GENERATES THE PROPER TRANSACTIONS
 //    private SortingHatAlgorithm sortingAlgorithm;
 
@@ -207,7 +207,7 @@ public class PathXDataModel extends MiniGameDataModel
         return selectedTile;
     }
 
-    public String getCurrentLevel()
+    public PathX_Level getCurrentLevel()
     {
         return currentLevel;
     }
@@ -228,7 +228,7 @@ public class PathXDataModel extends MiniGameDataModel
     }
 
     // MUTATOR METHODS
-    public void setCurrentLevel(String initCurrentLevel)
+    public void setCurrentLevel(PathX_Level initCurrentLevel)
     {
         currentLevel = initCurrentLevel;
     

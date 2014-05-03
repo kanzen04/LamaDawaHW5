@@ -14,7 +14,7 @@
         <property name="IMAGE_MAP"                          value="./sorting_hat/BackgroundGameCopy.png"></property>
         <property name="IMAGE_LEVEL_PLAY_MAP"               value="./sorting_hat/BackgroundGameLevelPlay.png"></property>
         <property name="IMAGE_LEVEL_LOADED"                 value="./sorting_hat/BackgroundMenu.png"></property>
-        
+        <property name="IMAGE_BUTTON_LEVELS"                value="./sorting_hat/LevelButton.png"></property>
         <property name="IMAGE_BACKGROUND_LEVEL_PLAY"        value="./sorting_hat/BackgroundLevelPlay.png"></property>
         <property name="IMAGE_BUTTON_PLAY"                  value="./sorting_hat/ButtonPlay.png"></property>
         <property name="IMAGE_BUTTON_PLAY_MOUSE_OVER"       value="./sorting_hat/ButtonPlayMouseOver.png"></property>

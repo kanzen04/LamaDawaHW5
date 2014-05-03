@@ -41,16 +41,16 @@ public class PathX_BinLevelIO
      * Reads the level data found in levelFile into levelToLoad.
      */
     
-    public PathX_Level loadLevel(File levelFile, PathXDataModel model)
+    public PathX_Level loadLevel(String currentLevel, PathXDataModel model)
     {
         PathX_Level levelToLoad = new PathX_Level();
         try
         {
             // WE'LL FILL IN SOME OF THE LEVEL OURSELVES
-            //PathX_Level levelToLoad = model.getLevel();
-            //levelFile= new File(PathXConstants.PATH_DATA+PathXConstants.LEVELS_PATH+"Adobe.bin");
-           // levelToLoad= new PathX_Level();
-            levelToLoad.reset();
+            
+            
+            File levelFile= new File(PathXConstants.PATH_DATA+PathXConstants.LEVELS_PATH+ currentLevel + ".bin");
+            levelToLoad= new PathX_Level();
 
             // LET'S USE A FAST LOADING TECHNIQUE. WE'LL LOAD ALL OF THE
             // BYTES AT ONCE INTO A BYTE ARRAY, AND THEN PICK THAT APART.

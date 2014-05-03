@@ -19,7 +19,7 @@ public class PathXConstants
     public static String PROPERTIES_FILE_NAME = "properties.xml";
     public static String PROPERTIES_SCHEMA_FILE_NAME = "properties_schema.xsd";    
     public static String PATH_DATA = "./data/";
-      public static final String  LEVELS_PATH             = PATH_DATA + "sorting_hat/";
+    public static String  LEVELS_PATH = PATH_DATA + "sorting_hat/";
     
     // THESE ARE THE TYPES OF CONTROLS, WE USE THESE CONSTANTS BECAUSE WE'LL
     // STORE THEM BY TYPE, SO THESE WILL PROVIDE A MEANS OF IDENTIFYING THEM
@@ -40,6 +40,7 @@ public class PathXConstants
     public static final String MISCASTS_COUNT_TYPE = "TILE_COUNT_TYPE";
     public static final String TIME_TYPE = "TIME_TYPE"; 
     public static final String STATS_BUTTON_TYPE = "STATS_BUTTON_TYPE";
+    public static final String LEVEL_BUTTON_TYPE = "LEVEL_BUTTON_TYPE";
     public static final String UNDO_BUTTON_TYPE = "UNDO_BUTTON_TYPE";
     public static final String ALGORITHM_TYPE = "ALGORITHM_TYPE";
     public static final String MAP = "MAP";
@@ -63,7 +64,7 @@ public class PathXConstants
     public static final int FPS = 30;
 
     // TOTAL NUMBER OF LEVELS
-    public static final int TOTAL_LEVEL = 3;
+    public static final int TOTAL_LEVEL = 20;
     
     // RENDERING SETTINGS
     public static final int INTERSECTION_RADIUS = 20;

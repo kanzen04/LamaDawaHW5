@@ -205,8 +205,10 @@ public class PathXEventHandler {
      * C
      *
      */
-    public void respondToSelectLevelRequest(File levelFile) {
+    public void respondToSelectLevelRequest(String currentLevel) {
 
+        
+        
         // WE ONLY LET THIS HAPPEN IF THE MENU SCREEN IS VISIBLE
         if (game.isCurrentScreenState(GAME_SCREEN_STATE)) {
             // GET THE GAME'S DATA MODEL, WHICH IS ALREADY LOCKED FOR US
@@ -215,12 +217,11 @@ public class PathXEventHandler {
             // UPDATE THE DATA
 //            fileManager.loadlevel(levelFile, data);
             
+            ((PathXDataModel)game.getDataModel()).currentLevel = game.getFileManager2().loadLevel(currentLevel, data);
             
-            PathX_Level fileManager2 = game.getFileManager2().loadLevel(levelFile, data);
-
             
             game.switchToGameScreen();
-//   fileManager.loadLevel(levelFile);
+            //   fileManager.loadLevel(levelFile);
             // data.reset(game);
             // GO TO THE GAME
         }

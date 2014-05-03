@@ -23,6 +23,8 @@ public class PathX_Level
     // COMPLETE LIST OF ROADS SORTED BY STARTING INTERSECTION LOCATION LEFT TO RIGHT
     public ArrayList<PathX_Road> roads;
     
+    public ArrayList<PathXCar> cars;
+    
     // THE STARTING LOCATION AND DESTINATION
     public PathX_Intersection startingLocation;
     public String backgroundImageFileName;
